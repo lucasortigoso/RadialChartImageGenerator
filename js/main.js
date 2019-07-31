@@ -23,7 +23,10 @@ $(function($) {
     $('#copyrightYear').text(d.getFullYear());
     // setup knob arcs
     $(".knob").knob({
-    });
+        'format' : function (value) {
+           return value + '%';
+        }
+      });
     $('.shadow-checkbox').change(function() {
         $($(this).attr('arc-id')).attr('data-shadow', $(this).is(':checked')).trigger("configure");
     });
@@ -211,6 +214,7 @@ $(function($) {
 
 
 function changeArc(arcId, dataChange, value, doNotLog) {
+    
     if(doNotLog) {
         // don't send to ga
     } else {
